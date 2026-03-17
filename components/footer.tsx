@@ -17,7 +17,6 @@ export function AppFooter() {
   return (
     <Footer
       links={footerLinks}
-      builtByBrand="Next Web3 AI"
       linkComponent={Link}
     />
   )
