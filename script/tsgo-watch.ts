@@ -22,7 +22,7 @@ type WatchTarget = {
 
 const WATCH_TARGETS: readonly WatchTarget[] = [
   {
-    paths: ['app', 'components', 'hooks', 'lib', 'provider', 'packages', 'script'],
+    paths: ['app', 'components', 'hooks', 'lib', 'provider', 'script', 'auth', 'auth.config'],
     extensions: ['.ts', '.tsx'],
     recursive: true,
     ignorePatterns: ['node_modules', '.next', 'dist'],
@@ -36,7 +36,7 @@ const WATCH_TARGETS: readonly WatchTarget[] = [
 ]
 
 // State
-let debounceTimer: Timer | null = null
+let debounceTimer: NodeJS.Timeout | null = null
 let isRunning = false
 
 // ANSI color codes

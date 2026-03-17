@@ -27,13 +27,6 @@ declare module "next-auth" {
   }
 }
 
-declare module "@auth/core/jwt" {
-  interface JWT {
-    id: string;
-    walletAddress: string;
-  }
-}
-
 /**
  * Extracts the primary wallet address from Dynamic Labs JWT payload
  */
@@ -71,16 +64,16 @@ export const authConfig = {
     async jwt({ token, user }) {
       // Initial sign in
       if (user) {
-        token.id = user.id;
-        token.walletAddress = user.walletAddress;
+        (token as any).id = user.id;
+        (token as any).walletAddress = user.walletAddress;
       }
       return token;
     },
     async session({ session, token }) {
       // Send properties to the client
       if (token) {
-        session.user.id = token.id;
-        session.user.walletAddress = token.walletAddress;
+        (session.user as any).id = token.id as string;
+        (session.user as any).walletAddress = token.walletAddress as string;
       }
       return session;
     },

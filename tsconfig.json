@@ -29,9 +29,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts",
-    "packages/liquidcn/src/**/*.ts",
-    "packages/liquidcn/src/**/*.tsx"
+    "**/*.mts"
   ],
-  "exclude": ["node_modules", "packages/liquidcn/node_modules"]
+  "exclude": ["node_modules"]
 }
