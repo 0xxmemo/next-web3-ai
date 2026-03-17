@@ -22,7 +22,7 @@ type WatchTarget = {
 
 const WATCH_TARGETS: readonly WatchTarget[] = [
   {
-    paths: ['app', 'components', 'hooks', 'lib', 'provider', 'script', 'auth', 'auth.config'],
+    paths: ['app', 'components', 'hooks', 'lib', 'provider', 'script', 'auth.ts', 'auth.config.ts'],
     extensions: ['.ts', '.tsx'],
     recursive: true,
     ignorePatterns: ['node_modules', '.next', 'dist'],

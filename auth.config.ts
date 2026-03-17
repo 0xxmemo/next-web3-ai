@@ -1,4 +1,5 @@
 import type { NextAuthConfig } from "next-auth";
+import type { JWT as BaseJWT } from "@auth/core/jwt";
 
 // Extend the JWT payload type for Dynamic Labs
 export interface DynamicJwtPayload {
@@ -12,6 +13,12 @@ export interface DynamicJwtPayload {
     wallet_name?: string;
   }>;
   [key: string]: unknown;
+}
+
+// Extended JWT type with our custom fields
+export interface JWT extends BaseJWT {
+  id: string;
+  walletAddress: string;
 }
 
 declare module "next-auth" {
@@ -64,16 +71,18 @@ export const authConfig = {
     async jwt({ token, user }) {
       // Initial sign in
       if (user) {
-        (token as any).id = user.id;
-        (token as any).walletAddress = user.walletAddress;
+        const jwt = token as JWT;
+        jwt.id = user.id;
+        jwt.walletAddress = user.walletAddress;
       }
       return token;
     },
     async session({ session, token }) {
       // Send properties to the client
       if (token) {
-        (session.user as any).id = token.id as string;
-        (session.user as any).walletAddress = token.walletAddress as string;
+        const jwt = token as JWT;
+        session.user.id = jwt.id;
+        session.user.walletAddress = jwt.walletAddress;
       }
       return session;
     },
