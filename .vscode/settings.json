@@ -32,7 +32,7 @@
   // Language Updates
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "typescript.experimental.useTsgo": false,
+  "typescript.experimental.useTsgo": true,
 
   // ---------------------------
   // Extension Settings
